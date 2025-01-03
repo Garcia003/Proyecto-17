@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -13,9 +14,9 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link rel="manifest" href="manifest.json">
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <!-- <link rel="manifest" href="{% static 'manifest.json' %}"> -->
 
   <!-- Google Fonts -->
   <link
@@ -23,27 +24,36 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
   <!-- =======================================================
  
   ======================================================== -->
+
+  {% load pwa %}
+
+  {% progressive_web_app_meta %}
+
 </head>
 
 
-<script>
+<!-- <script>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js")
+    navigator.serviceWorker.register('{% static "sw.js" %}').then(registration => {
+      console.log("Service Worker registrado correctamente", registration);
+    }).catch(error => {
+      console.error("Error al registrar el Service Worker", error);
+    });
   }
-</script>
+</script> -->
 
 <!-- ======= Mobile nav toggle button ======= -->
 <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -53,16 +63,16 @@
   <div class="d-flex flex-column">
 
     <div class="profile">
-      <img src="assets/img/logo_aqui.png" alt="" class="img-fluid">
+      <img src="{% static 'img/logo_aqui.png' %}" alt="" class="img-fluid">
       <h1 class="text-light"><a href="index.html">Nuestro ecosistema</a></h1>
     </div>
 
     <nav id="navbar" class="nav-menu navbar">
       <ul>
-        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+        <li><a href="#hero" class="nav-link scrollto "><i class="bx bx-home"></i> <span>Inicio</span></a></li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bi bi-hospital"></i> <span>Servicios</span></a></li>
         <li><a href="#plataformas" class="nav-link scrollto"><i class="bi bi-display text-white"></i>
-            <span>Plataformas</span></a></li>
+        <span>Plataformas</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contacto</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
@@ -246,7 +256,7 @@
         <div class="col-md-4 mb-4">
           <div class="padre">
             <div class="card">
-              <img class="img-icono-genereal d-block mx-auto" src="./assets/img/plataformas.png" class="card-img-top"
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/plataformas.png' %}" class="card-img-top"
                 alt="Curso 1">
               <div class="card-body">
                 <h5 class="card-title text-center">Modulos de Cotizacion</h5>
@@ -282,7 +292,7 @@
         <div class="col-md-4 mb-4">
           <div class="padre">
             <div class="card">
-              <img class="img-icono-genereal d-block mx-auto" src="./assets/img/general_plataforma.png"
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/general_plataforma.png' %}"
                 class="card-img-top" alt="Curso 1">
               <div class="card-body">
                 <h5 class="card-title text-center ">Sistema de Emision</h5>
@@ -318,7 +328,7 @@
         <div class="col-md-4 mb-4">
           <div class="padre">
             <div class="card">
-              <img class="img-icono-genereal d-block mx-auto" src="./assets/img/genereal_plataforma2.png"
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/genereal_plataforma2.png' %}"
                 class="card-img-top" alt="Curso 1">
               <div class="card-body">
                 <h5 class="card-title text-center">CRM de casos</h5>
@@ -354,14 +364,14 @@
         <div class="col-md-4 mb-4" id="columna-4">
           <div class="padre">
             <div class="card">
-              <img class="img-icono-genereal d-block mx-auto" src="./assets/img/academia.png" class="card-img-top"
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/academia.png' %}" class="card-img-top"
                 alt="Curso 1">
               <div class="card-body">
                 <h5 class="card-title text-center">Academia</h5>
                 <!-- <p class="card-text"></p> -->
                 <div class="d-flex justify-content-around">
                   <!-- <a href="#" class="btn btn-primary">acceder</a> -->
-                  <a href="https://7c67-181-204-71-85.ngrok-free.app/login/?next=/" class="btn btn-primary" id="boton_emision"
+                  <a href="https://s5hl6bhm-8000.use2.devtunnels.ms/" class="btn btn-primary" id="boton_emision"
                    target="_blank">Probar</a>
                   <button type="button" class="btn btn-primary" id="liveToastBtn4">ver más</button>
                 </div>
@@ -391,7 +401,7 @@
         <div class="col-md-4 mb-4" id="columna-5">
           <div class="padre">
             <div class="card">
-              <img class="img-icono-genereal d-block mx-auto" src="./assets/img/telemedicine.png" class="card-img-top"
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/telemedicine.png' %}" class="card-img-top"
                 alt="Curso 1">
               <div class="card-body">
                 <h5 class="card-title text-center">Telemedicina</h5>
@@ -420,6 +430,69 @@
             <!-- ---- -->
           </div>
         </div>
+
+        <!-- Plataforma 6 -->
+        <div class="col-md-4 mb-4" id="columna-7">
+          <div class="padre">
+            <div class="card">
+              <img class="img-icono-genereal d-block mx-auto" src="{% static 'img/bot.png' %}" class="card-img-top"
+                alt="Curso 1">
+              <div class="card-body">
+                <h5 class="card-title text-center">Bot</h5>
+                <!-- <p class="card-text"></p> -->
+                <div class="d-flex justify-content-around">
+                  <!-- <a href="#" class="btn btn-primary">acceder</a> -->
+                  <!-- <button type="button" class="btn btn-primary" id="liveToastBtn5">ver más</button> -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Abrir
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <script SameSite="None; Secure"  type="module" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+                          <div id="myLandbot" style="width: 100%; height: 500px"></div>
+                          <script type="module">
+                            var myLandbot = new Landbot.Container({
+                              container: '#myLandbot',
+                              configUrl: 'https://storage.googleapis.com/landbot.pro/v3/H-2713190-WQ1VEUFUNPG9TR4U/index.json',
+                            });
+                          </script>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- toast -->
+            <!-- <div class="contendor-toast toast-container p-3">
+              <div id="liveToast5" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <i class="bi bi-easel pe-2"></i>
+                  <strong class="me-auto">Bot</strong>
+                  <small>mins ago</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Bot
+                </div>
+              </div>
+            </div> -->
+            <!-- ---- -->
+          </div>
+        </div>
+
   </section>
 
 
@@ -513,21 +586,21 @@
 
 <!-- Vendor JS Files -->
 <!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script> -->
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/typed.js/typed.umd.js"></script>
-<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/typed.js/typed.umd.js' %}"></script>
+<script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
 <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
 <!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-<script src="validation.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'validation.js' %}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="serviceWorker.js"></script>
+<!-- <script src="{% static 'serviceWorker.js' %}"></script> -->
 
 
 <script>
@@ -586,26 +659,6 @@
     }
   });
 </script>  -->
-
-<!-- landbot -->
-<script>
-  window.addEventListener('mouseover', initLandbot, { once: true });
-  window.addEventListener('touchstart', initLandbot, { once: true });
-  var myLandbot;
-  function initLandbot() {
-    if (!myLandbot) {
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
-      s.addEventListener('load', function () {
-        var myLandbot = new Landbot.Livechat({
-          configUrl: 'https://storage.googleapis.com/landbot.pro/v3/H-2713190-WQ1VEUFUNPG9TR4U/index.json',
-        });
-      });
-      s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-    }
-  }
-</script>
 
 </body>
 

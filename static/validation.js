@@ -17,6 +17,7 @@ const sectionPlataforma = document.getElementById('plataformas');
 const columna = document.getElementById('columna-4');
 const columna5 = document.getElementById('columna-5');
 const columna6 = document.getElementById('columna-6');
+const columna7 = document.getElementById('columna-7');
 // mostrar iframe modulos de cotizacion
 const boton_cotizacion = document.getElementById('boton_cotizacion');
 const iframe_cotizacion = document.getElementById('iframe_cotizacion');
@@ -64,10 +65,10 @@ if (toastTrigger3) {
   toastTrigger3.addEventListener('click', () => {
     toastBootstrap3.show();
 
-    columna6.classList.add("columna-js6");
+    columna7.classList.add("columna-js7");
 
     toastLiveExample3.addEventListener('hidden.bs.toast', () => {
-      columna6.classList.remove("columna-js6");
+      columna7.classList.remove("columna-js7");
     });
 
   });
