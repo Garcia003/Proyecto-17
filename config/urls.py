@@ -17,11 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from core.views import index
+from crm import views
+
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('login_view/', views.login_view, name='login_view'),
+    path('logout/', views.logout_view, name='logout'),
+    path('home/', views.home_view, name='home'), 
     # pwa
     path('', include('pwa.urls')),
+    path('crm/', include('crm.urls')),
 ]

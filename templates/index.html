@@ -78,6 +78,11 @@
     </nav><!-- .nav-menu -->
   </div>
 </header><!-- End Header -->
+<div class="container">
+  {% block content %}
+  
+  {% endblock %}
+</div>
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
@@ -335,7 +340,7 @@
                 <!-- <p class="card-text"></p> -->
                 <div class="d-flex justify-content-around">
                   <!-- <a href="https://soporte48hd.com/" class="btn btn-primary">acceder</a> -->
-                  <a type="button" href="https://soporte48hd.com/" class="btn btn-primary" id="boton_emision"
+                  <a type="button" href="{% url 'login_view' %}" class="btn btn-primary" id="boton_emision"
                     target="_blank">Probar</a>
                   <button type="button" class="btn btn-primary" id="liveToastBtn3">ver más</button>
                 </div>
@@ -371,7 +376,7 @@
                 <!-- <p class="card-text"></p> -->
                 <div class="d-flex justify-content-around">
                   <!-- <a href="#" class="btn btn-primary">acceder</a> -->
-                  <a href="https://s5hl6bhm-8000.use2.devtunnels.ms/" class="btn btn-primary" id="boton_emision"
+                  <a href="https://c4c5-181-204-71-85.ngrok-free.app/login/" class="btn btn-primary" id="boton_emision"
                    target="_blank">Probar</a>
                   <button type="button" class="btn btn-primary" id="liveToastBtn4">ver más</button>
                 </div>

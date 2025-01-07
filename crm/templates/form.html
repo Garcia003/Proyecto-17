@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+<form action="" method="POST" >
+    {% csrf_token %}
+    <div class="container">
+        <h1>Formulario {{ title }}</h1>
+        {% crispy form %}
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </div>
+</form>
+{% endblock contenido %}

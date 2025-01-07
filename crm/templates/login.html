@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<div class="loginBox">
+    <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Inicia sesión aquí</h3>
+    <form action="{% url 'login_view' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <div class="inputBox">
+            <input id="uname" type="text" name="username" placeholder="Username">
+            <input id="pass" type="password" name="password" placeholder="Password">
+        </div>
+        <input type="submit" value="Login">
+    </form>
+    <!-- <a href="#">Olvidé mi contraseña<br></a> -->
+    <div class="text-center">
+        <!-- <p style="color: #59238F;">Registrarse</p> -->
+    </div>
+</div>
+
+  <!-- Sweet alert 2.0-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {% load sweetify %}
+{% sweetify %}
+</body>
+</html>

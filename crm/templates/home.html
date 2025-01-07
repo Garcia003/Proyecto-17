@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="text-white text-center">CRM</h4>
+                    <a href="{% url 'home' %}">Inico</a>
+                    <a href="{% url 'agente' %}">Agentes</a>
+                    <a href="{% url 'casos' %}">Casos</a>
+                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 content">
+                <div class="text-right">
+                    <div id="toggle-dark-mode" class="float-right">
+                        <label class="switch" for="switch">
+                            <input id="switch" type="checkbox" class="circle" />
+                            <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="moon svg">
+                                <!-- Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License -->
+                                <!-- https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                <path
+                                    d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
+                                    fill="white">
+                                </path>
+                            </svg>
+                            <div class="sun svg">
+                                <span class="dot"></span>
+                            </div>
+                        </label>
+                    </div>
+
+                </div>
+                <h1>Bienvenido al CRM de casos demo</h1>
+                <p>Este es su panel de control donde puede gestionar su perfil, configuración y más.</p>
+
+                {% if request.path == '/home/' %}
+                <div class="container d-flex justify-content-center">
+                    <div class="cardBox align-items-center">
+                        <div class="card">
+                            <div class="h4">Bienvenido {{ request.user }}</div>
+                        
+                            <div class="content">
+                            <div class="h3">CRM</div>
+                            <p>El CRM de casos es una herramienta diseñada para ayudar a las organizaciones a gestionar y resolver casos de clientes de manera eficiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% block contenido %}
+                  
+                {% endblock contenido %}
+            </main>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <!-- Sweet alert 2.0-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% load sweetify %}
+    {% sweetify %}
+</body>
+
+</html>

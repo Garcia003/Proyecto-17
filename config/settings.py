@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'pwa',
+    'crm',
+    'sweetify',
+    'crispy_forms',
+    "crispy_bootstrap4",
+
 ]
 
 MIDDLEWARE = [
@@ -148,4 +153,10 @@ PWA_APP_ICONS_APPLE = [
     }
 ]
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceWorker.js')
+
+LOGIN_URL = '/login_view/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
