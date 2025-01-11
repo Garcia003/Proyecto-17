@@ -8,6 +8,8 @@
     <title>CRM</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -16,10 +18,28 @@
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <h4 class="text-white text-center">CRM</h4>
-                    <a href="{% url 'home' %}">Inico</a>
-                    <a href="{% url 'agente' %}">Agentes</a>
-                    <a href="{% url 'casos' %}">Casos</a>
-                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Inicio</a>
+                        </li>
+                        <li class="nav-heading">Agentes</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'agente' %}"><i class="fas fa-user-tie"></i> Agentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'verAgente' %}"><i class="fas fa-eye"></i> Ver agentes</a>
+                        </li>
+                        <li class="nav-heading">Casos</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'casos' %}"><i class="fas fa-briefcase"></i> Casos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'verCaso' %}"><i class="fas fa-eye"></i> Ver casos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 content">

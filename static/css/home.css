@@ -255,3 +255,15 @@ body {
 .switch:has(.circle:checked)>.moon {
     opacity: 0;
 }
+
+.nav-heading {
+  font-size: 11px;
+    text-transform: uppercase;
+    color: #16eacc;
+    font-weight: 600;
+    margin: 10px 0 5px 15px;
+}
+
+.fas, .fa {
+  margin-right: 8px;
+}

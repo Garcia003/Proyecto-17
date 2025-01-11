@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
 from .forms import AgentForm, CaseForm
+from .models import agent, Cases
 
 # Create your views here.
 def login_view(request):
@@ -62,3 +63,32 @@ def agente(request):
             return redirect('home')
         data['form'] = form
     return render(request, 'form.html', data)
+
+def verAgente(request):
+    agents = agent.objects.all()
+    thead_field = ['Nombre', 'Email', 'Teléfono', 'Dirección']
+    tbody_field = [
+        (agent.agent_name, agent.agent_email,
+        agent.agent_phone,agent.agent_address)
+        for agent in agents
+        ]
+    data = {
+        'thead_field': thead_field,
+        'tbody_field': tbody_field,
+        'title': 'Agentes'
+    }
+    return render(request, 'listar.html', data)
+
+def verCaso(request):
+    casos = Cases.objects.all()
+    thead_field = ['Asignado a', 'Nombre del Caso', 'Descripción del Caso', 'Estado del Caso', 'Prioridad del Caso', 'Fecha de Creación del Caso', 'Fecha de Cierre del Caso']
+    tbody_field = [
+        (case.Assigned_to, case.case_name, case.case_description, case.case_status, case.case_priority, case.case_created, case.case_closed)
+        for case in casos
+        ]
+    data = {
+        'thead_field': thead_field,
+        'tbody_field': tbody_field,
+        'title': 'Casos'
+    }
+    return render(request, 'listar.html', data)

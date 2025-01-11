@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container mt-5">
+    <div class="text-center my-4">
+        <h1>Lista de {{ title }}</h1>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    {% for thead in thead_field %}
+                    <th>{{ thead }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for tbody in tbody_field %}
+                <tr>
+                    {% for field in tbody %}
+                    <td>{{ field }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock contenido %}
