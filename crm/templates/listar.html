@@ -18,7 +18,14 @@
                 {% for tbody in tbody_field %}
                 <tr>
                     {% for field in tbody %}
-                    <td>{{ field }}</td>
+                        {% if field.pk %}
+                            <td>
+                                <a class="btn btn-primary btn-sm " href="{{field.url}}">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="{{ field.url_delete }}">Eliminar</a>
+                            </td>
+                        {% else %}
+                            <td>{{ field }}</td>
+                        {% endif %}
                     {% endfor %}
                 </tr>
                 {% endfor %}

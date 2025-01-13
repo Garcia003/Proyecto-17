@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+<form method="POST" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p class="title">Edita tu informacion </p>
+    <div class="container">
+        {% crispy form %}
+        <button class="btn btn-primary btn-sm">enviar</button>
+    </div>
+</form>
+{% endblock contenido %}

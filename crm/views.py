@@ -1,5 +1,5 @@
 from pyexpat.errors import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -66,24 +66,46 @@ def agente(request):
 
 def verAgente(request):
     agents = agent.objects.all()
-    thead_field = ['Nombre', 'Email', 'Teléfono', 'Dirección']
+    thead_field = ['Nombre', 'Email', 'Teléfono', 'Dirección', 'Opciones']
     tbody_field = [
-        (agent.agent_name, agent.agent_email,
-        agent.agent_phone,agent.agent_address)
+        (
+            agent.agent_name, 
+            agent.agent_email,
+            agent.agent_phone,
+            agent.agent_address,
+            {
+                'pk': agent.id,
+                'url': reverse('editarAgentes', args=[agent.id]),
+                'url_delete': reverse('eliminarAgentes', args=[agent.id]),
+             }
+        )
         for agent in agents
         ]
     data = {
         'thead_field': thead_field,
         'tbody_field': tbody_field,
-        'title': 'Agentes'
+        'title': 'Agentes',
     }
     return render(request, 'listar.html', data)
 
 def verCaso(request):
     casos = Cases.objects.all()
-    thead_field = ['Asignado a', 'Nombre del Caso', 'Descripción del Caso', 'Estado del Caso', 'Prioridad del Caso', 'Fecha de Creación del Caso', 'Fecha de Cierre del Caso']
+    thead_field = ['Asignado a', 'Nombre', 'Descripción', 'Estado', 'Prioridad', 'Fecha de Creación', 'Fecha de Cierre', 'Opciones']
     tbody_field = [
-        (case.Assigned_to, case.case_name, case.case_description, case.case_status, case.case_priority, case.case_created, case.case_closed)
+        (
+            case.Assigned_to.agent_name, 
+            case.case_name, 
+            case.case_description, 
+            case.case_status, 
+            case.case_priority, 
+            case.case_created, 
+            case.case_closed, 
+            {
+             'pk': case.id,
+             'url': reverse('editarCasos', args=[case.id]),
+             'url_delete': reverse('eliminarCasos', args=[case.id]),
+            } 
+        )
         for case in casos
         ]
     data = {
@@ -92,3 +114,46 @@ def verCaso(request):
         'title': 'Casos'
     }
     return render(request, 'listar.html', data)
+
+def editarAgentes(request, id):
+    agentes = get_object_or_404(agent, id=id)
+    data = {
+        'form': AgentForm(instance=agentes),
+        'title': 'Editar Agente'
+    }
+    if request.method == 'POST':
+        form = AgentForm(data=request.POST, instance=agentes)
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, '¡Agente actualizado correctamente!')
+            return redirect('verAgente')
+        data['form'] = form
+    return render(request, 'edit.html', data)
+
+
+def editarCasos(request, id):
+    casos = get_object_or_404(Cases, id=id)
+    data = {
+        'form': CaseForm(instance=casos),
+        'title': 'Editar Caso'
+    }
+    if request.method == 'POST':
+        form = CaseForm(data=request.POST, instance=casos)
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, '¡Caso actualizado correctamente!')
+            return redirect('verCaso')
+        data['form'] = form
+    return render(request, 'edit.html', data)
+
+def eliminarAgentes(request, id):
+    agentes = get_object_or_404(agent, id=id)
+    agentes.delete()
+    sweetify.success(request, '¡Agente eliminado correctamente!')
+    return redirect('verAgente')
+
+def eliminarCasos(request, id):
+    casos = get_object_or_404(Cases, id=id)
+    casos.delete()
+    sweetify.success(request, '¡Caso eliminado correctamente!')
+    return redirect('verCaso')
